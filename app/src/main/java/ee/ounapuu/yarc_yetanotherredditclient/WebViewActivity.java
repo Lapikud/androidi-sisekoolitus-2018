@@ -13,18 +13,14 @@ public class WebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
-        // TODO task 13: what is this? Explain.
+        // TODO task EASY: what is this "WebView" you speak of? Explain.
         webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
 
-
         Bundle extras = getIntent().getExtras();
-        if (extras == null) {
-            webView.loadUrl("localhost");
-
-        } else {
-            webView.loadUrl(extras.getString("url"));        // TODO task 12:
-
+        if (extras != null) {
+            // TODO task MODERATE: You need to find a way to pass an URL using the Intent.
+            webView.loadUrl("this is not right");
         }
     }
 }

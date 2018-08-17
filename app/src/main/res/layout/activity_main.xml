@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--TODO task EASY: I feel like this search bar thing takes up way too much space. Can you make it a bit smaller so that we get more content on screen?-->
     <android.support.v7.widget.SearchView
         android:id="@+id/subredditSearchbar"
         android:layout_width="match_parent"

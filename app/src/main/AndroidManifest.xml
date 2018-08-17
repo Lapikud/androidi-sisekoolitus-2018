@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ee.ounapuu.yarc_yetanotherredditclient">
 
-    <!-- TODO task 1: it's not nice to access internet all willy-nilly without asking for permission first. -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- TODO task CRITICAL: it's not nice to access internet all willy-nilly without asking for permission first. -->
 
     <application
         android:allowBackup="true"
@@ -19,12 +18,11 @@
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".CommentsActivity" />
-        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".WebViewActivity" />
     </application>
 
 </manifest>

@@ -27,13 +27,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // TODO task 3: Android Studio should be yelling at you about this mess. Fix it.
+    // TODO task EASY: Android Studio should be yelling at you about this mess. Fix it.
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
 
-//    TODO task 2: building requests is fun, but gets boring fast. Are we missing a dependency here?
-    implementation 'com.android.volley:volley:1.1.1'
+//    TODO task CRITICAL: building requests is fun, but gets boring fast. Are we missing a dependency here? Hint: check MainActivity getPosts() method
 
-    // TODO task 10: why do we need this? Find the answer and comment. Out loud or in the code, both acceptable.
+    // TODO task EASY: why do we need this? Find the answer and comment. Out loud or in the code, both acceptable.
     implementation 'com.squareup.picasso:picasso:2.5.2'
 }

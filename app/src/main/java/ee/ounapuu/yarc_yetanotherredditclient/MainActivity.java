@@ -26,6 +26,7 @@ import ee.ounapuu.yarc_yetanotherredditclient.model.Post;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "yarc";
+
     private static final String BASE_URL = "https://reddit.com";
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -56,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         posts = new ArrayList<>();
+
+        // TODO task EASY: remove me once you have solved all CRITICAL tasks and everything works.
+        Post p = new Post();
+        p.setTitle("I am a placeholder. Hello!");
+        posts.add(p);
+        posts.add(p);
+        posts.add(p);
+        posts.add(p);
+
         mAdapter = new PostAdapter(posts);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -70,13 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                getPosts(BASE_URL + "/r/" + query + "/.json");
+                // TODO task CRITICAL: remember what we discussed about reddit and the way to access the Reddit API?
+                getPosts(BASE_URL);
                 return true;
             }
         });
     }
 
-    // TODO task BONUS 2: instead of all this manual work, try using a Reddit API wrapper.
+    // TODO task BONUS: instead of all this manual work, try using a Reddit API wrapper.
     void getPosts(String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -84,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         preparePosts(response);
                     }
                 }, new Response.ErrorListener() {
@@ -100,12 +110,15 @@ public class MainActivity extends AppCompatActivity {
     void preparePosts(String response) {
         try {
             JSONObject json = (JSONObject) new JSONTokener(response).nextValue();
-            JSONArray postArray = json.getJSONObject("data").getJSONArray("children"); // TODO task 11: well this can't be right. Look into the JSON structure with a browser/somne other tool and fix this so we get an array of the posts here.
+
+            // TODO task CRITICAL: well this can't be right. Look into the JSON structure with a browser/somne other tool and fix this so we get an array of the posts here.
+            JSONArray postArray = json.getJSONObject("hurr").getJSONArray("durr");
 
             List<Post> newPosts = new ArrayList<>();
             for (int i = 0; i < postArray.length(); i++) {
                 JSONObject row = postArray.getJSONObject(i).getJSONObject("data");
 
+                // TODO task EASY: I feel like some information is missing here. Fill all of the relevant information.
                 Post post = new Post();
                 post.setTitle(row.getString("title"));
                 post.setThumbnailURL(row.getString("thumbnail"));
@@ -113,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 newPosts.add(post);
             }
 
-            // TODO task 9: explain what this code block does as a neat comment.
+            // TODO task EASY: explain what this code block does as a neat comment.
             posts.clear();
             posts.addAll(newPosts);
             mAdapter.notifyDataSetChanged();

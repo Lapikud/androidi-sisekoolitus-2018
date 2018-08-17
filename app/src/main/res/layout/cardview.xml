@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     card_view:cardCornerRadius="4dp">
-    <!-- TODO task 4a: an intern touched this file and now the post author field is missing. Can you fix it? -->
+
+    <!-- TODO task EASY: an intern touched this file and now the post author field is missing. Can you fix it? -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,8 +24,8 @@
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:srcCompat="@color/colorAccent" />
 
-        <!--TODO task 5: Yeah, these strings are placeholders, but keeping them here is a big no-no. Can you catch them all (and put them to values/strings.xml)? Hint: alt+enter-->
-        <!--TODO task 5a: this title is a bit too small, can you make it bigger, bolder, taller?-->
+        <!--TODO task EASY: Yeah, these strings are placeholders, but keeping them here is a big no-no. Can you catch them all (and put them to values/strings.xml)? Hint: alt+enter-->
+        <!--TODO task EASY: this title is a bit too small, can you make it bigger, bolder, taller?-->
         <TextView
             android:id="@+id/post_title"
             android:layout_width="323dp"
@@ -64,5 +65,5 @@
 
 
     </android.support.constraint.ConstraintLayout>
-    <!-- TODO task BONUS 1: this view looks quite boring right now. Make it DAZZLE! -->
+    <!-- TODO task BONUS: this view looks quite boring right now. Make it DAZZLE! -->
 </android.support.v7.widget.CardView>

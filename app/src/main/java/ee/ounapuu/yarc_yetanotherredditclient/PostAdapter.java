@@ -26,16 +26,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public ImageView thumbnail;
-
         public TextView postTitle;
         public TextView karmaCount;
         public TextView subreddit;
 
-        //        TODO task 4b: remember that author field you re-added? Well, we need to somehow reach it to be able to fill it with useful text, ya know. Would be nice to know who posted that.
+        // TODO task EASY: remember that author field you re-added? Well, we need to somehow reach it to be able to fill it with useful text, ya know. Would be nice to know who posted that.
         public ViewHolder(CardView v) {
             super(v);
             cardView = v;
-            // TODO task 6: something's not quite right here...
+            // TODO task EASY: something's not quite right here...
             thumbnail = v.findViewById(R.id.post_thumbnail);
             postTitle = v.findViewById(R.id.post_title);
             karmaCount = v.findViewById(R.id.subreddit);
@@ -44,7 +43,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     public PostAdapter(List<Post> posts) {
-        Log.d(TAG, "setting posts");
         subredditPosts = posts;
     }
 
@@ -62,40 +60,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final PostAdapter.ViewHolder holder, final int position) {
-        // TODO task 7: we have set the title here, yes, but what about other elements in the card?
-        Log.d(TAG, "onbindviewholder");
-        Log.d(TAG, subredditPosts.get(position).getTitle());
+        // TODO task EASY: we have set the title here, yes, but what about other elements in the card?
+
         holder.postTitle.setText(subredditPosts.get(position).getTitle());
-        Picasso.with(holder.thumbnail.getContext()).load(subredditPosts.get(position).getThumbnailURL()).into(holder.thumbnail);
-
-        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context ctx = holder.thumbnail.getContext();
-                Intent intent = new Intent(ctx, WebViewActivity.class);
-                intent.putExtra("url", subredditPosts.get(position).getPostURL());
-                ctx.startActivity(intent);
-            }
-        });
-
-
         holder.postTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO task 14: make it so that tapping the title opens the comments view. Hint: Intents and CommentsActivity.
-                Context ctx = holder.postTitle.getContext();
-                Intent intent = new Intent(ctx, WebViewActivity.class);
-                intent.putExtra("url", subredditPosts.get(position).getCommentsURL());
-                ctx.startActivity(intent);
+                // TODO task MODERATE: make it so that tapping the post title opens the comments view. Hint: Intents and CommentsActivity.
+                // If you get stuck here, ask for help, I will gladly show how to do this part!
+
             }
         });
 
+        // TODO task MODERATE: remember that dependency we added that is image related? I wonder how we can use it to load images into the card view...
 
+        // TODO task MODERATE: while you're at it, add something that makes the image open the URL when clicked. By the URL I mean the URL that the post refers to. Could be a news article, could be an image.
+        // Hint: it is related to WebViewActivity.
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
+        // TODO task EASY: log this value using log level INFO. Use the TAG at top of the class definition. Verify that the value gets logged by looking for it in logcat.
         return subredditPosts.size();
     }
 
